@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timothy Jay Sayson — IT Graduate | Mobile & Systems Developer</title>
+<meta name="description" content="Portfolio of Timothy Jay V. Sayson — BS Information Technology, Summa Cum Laude. Mobile, IoT & IT Support.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f5f6fa;
+    --surface:#ffffff;
+    --ink:#131722;
+    --ink-soft:#5b6472;
+    --ink-faint:#8b93a1;
+    --line:#e3e6ec;
+    --primary:#2f3e9e;
+    --primary-soft:#eef0fb;
+    --accent:#0e8f88;
+    --accent-soft:#e6f5f3;
+    --status:#1fa971;
+    --gold:#c99a2e;
+    --display:'Space Grotesk', sans-serif;
+    --body:'Inter', sans-serif;
+    --mono:'IBM Plex Mono', monospace;
+    --radius:10px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation-duration:.001ms !important; transition-duration:.001ms !important;} }
+  body{
+    background:var(--bg); color:var(--ink); font-family:var(--body);
+    line-height:1.65; -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  ::selection{background:var(--primary); color:#fff;}
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--primary); outline-offset:3px; }
+
+  .wrap{max-width:1000px; margin:0 auto; padding:0 28px;}
+
+  /* ---- nav ---- */
+  header.topbar{
+    position:sticky; top:0; z-index:60; background:rgba(245,246,250,0.9);
+    backdrop-filter:blur(8px); border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    max-width:1000px; margin:0 auto; padding:16px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{font-family:var(--display); font-weight:700; font-size:15px; letter-spacing:-.01em;}
+  .brand span{color:var(--primary);}
+  nav.links{display:flex; gap:26px; font-size:13.5px; font-weight:500; color:var(--ink-soft);}
+  nav.links a{text-decoration:none; transition:color .15s;}
+  nav.links a:hover{color:var(--primary);}
+  .nav-cta{
+    font-size:13px; font-weight:600; background:var(--primary); color:#fff;
+    padding:8px 16px; border-radius:7px; text-decoration:none; transition:background .15s;
+  }
+  .nav-cta:hover{background:#25317f;}
+  @media (max-width:640px){ nav.links{display:none;} }
+
+  /* ---- hero ---- */
+  .hero{padding:64px 0 56px;}
+  .hero-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:60px; align-items:center;}
+  @media (max-width:820px){ .hero-grid{grid-template-columns:1fr;} }
+
+  .status-pill{
+    display:inline-flex; align-items:center; gap:8px; font-family:var(--mono);
+    font-size:12px; font-weight:500; color:var(--status);
+    background:#e9f8f0; border:1px solid #c9ecd9; padding:6px 12px; border-radius:20px;
+  }
+  .status-pill::before{content:''; width:7px; height:7px; border-radius:50%; background:var(--status); animation:pulse 2s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1; box-shadow:0 0 0 0 rgba(31,169,113,.4);} 50%{opacity:.7; box-shadow:0 0 0 4px rgba(31,169,113,0);}}
+
+  .hero h1{
+    font-family:var(--display); font-weight:700; font-size:clamp(32px,5vw,48px);
+    line-height:1.1; letter-spacing:-.02em; margin:20px 0 14px;
+  }
+  .hero h1 .accent{color:var(--primary);}
+  .hero .role{font-size:17px; color:var(--ink-soft); max-width:520px; margin-bottom:28px;}
+
+  .btn-row{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:34px;}
+  .btn{
+    font-size:14px; font-weight:600; text-decoration:none; padding:11px 20px;
+    border-radius:8px; display:inline-flex; align-items:center; gap:8px; transition:all .15s;
+  }
+  .btn-primary{background:var(--ink); color:#fff;}
+  .btn-primary:hover{background:var(--primary); transform:translateY(-1px);}
+  .btn-ghost{border:1px solid var(--line); color:var(--ink); background:var(--surface);}
+  .btn-ghost:hover{border-color:var(--primary); color:var(--primary);}
+
+  .addr-block{font-size:13px; color:var(--ink-soft); display:flex; flex-direction:column; gap:6px;}
+  .addr-block span{display:flex; gap:8px; align-items:flex-start;}
+  .addr-block .lbl{font-family:var(--mono); font-size:11px; color:var(--ink-faint); min-width:64px; padding-top:1px;}
+
+  /* ---- hero photo showcase ---- */
+  .photo-showcase{position:relative; width:100%; max-width:400px; margin:0 auto 44px;}
+  .photo-showcase .frame{
+    position:relative; width:100%; aspect-ratio:4/5; border-radius:24px; overflow:hidden;
+    background:var(--surface); border:1px solid var(--line);
+    box-shadow:0 1px 2px rgba(20,24,33,.04), 0 30px 70px -25px rgba(20,24,33,.28);
+  }
+  .photo-showcase .frame img{width:100%; height:100%; object-fit:cover; display:block;}
+  .float-badge{
+    position:absolute; background:var(--surface); border:1px solid var(--line); border-radius:11px;
+    padding:10px 14px; box-shadow:0 10px 26px -12px rgba(20,24,33,.25); max-width:210px;
+  }
+  .float-badge .lbl{font-family:var(--mono); font-size:10px; letter-spacing:.06em; color:var(--ink-faint); text-transform:uppercase; margin-bottom:2px;}
+  .float-badge .val{font-family:var(--display); font-weight:700; font-size:13.5px; color:var(--ink);}
+  .badge-honors{bottom:-7%; left:-6%;}
+  .badge-honors .val{color:var(--gold);}
+  .badge-status{
+    bottom:-7%; right:-6%;
+    display:flex; align-items:center; gap:8px; white-space:nowrap;
+  }
+  .badge-status .dot{width:7px; height:7px; border-radius:50%; background:var(--status); flex-shrink:0; animation:pulse 2s ease-in-out infinite;}
+  .badge-status .val{font-family:var(--mono); font-size:12px; font-weight:600; color:var(--status);}
+  @media (max-width:820px){
+    .photo-showcase{max-width:320px;}
+  }
+  @media (max-width:520px){
+    .photo-showcase{max-width:260px; margin-bottom:36px;}
+    .float-badge{max-width:150px; padding:8px 11px;}
+    .float-badge .val{font-size:12px;}
+    .badge-honors{left:0; bottom:-14%;}
+    .badge-status{right:0; bottom:-14%;}
+  }
+
+  /* ---- section shell ---- */
+  section{padding:56px 0;}
+  section + section{border-top:1px solid var(--line);}
+  .sec-head{display:flex; align-items:center; gap:12px; margin-bottom:30px;}
+  .sec-tag{
+    font-family:var(--mono); font-size:11px; color:var(--primary); background:var(--primary-soft);
+    padding:4px 10px; border-radius:5px; font-weight:600; letter-spacing:.03em;
+  }
+  .sec-title{font-family:var(--display); font-weight:700; font-size:22px;}
+
+  /* ---- about ---- */
+  .about-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:40px;}
+  @media (max-width:760px){ .about-grid{grid-template-columns:1fr;} }
+  .about-grid p{color:var(--ink-soft); font-size:15px;}
+  .about-grid p + p{margin-top:14px;}
+  .info-table{border:1px solid var(--line); border-radius:10px; overflow:hidden; background:var(--surface);}
+  .info-table div{display:flex; justify-content:space-between; padding:12px 16px; font-size:13.5px; border-bottom:1px solid var(--line);}
+  .info-table div:last-child{border-bottom:none;}
+  .info-table span:first-child{color:var(--ink-faint); font-family:var(--mono); font-size:12px;}
+  .info-table span:last-child{font-weight:600; text-align:right;}
+
+  /* ---- experience: deployment log ---- */
+  .log{display:flex; flex-direction:column; gap:14px;}
+  .log-entry{
+    background:var(--surface); border:1px solid var(--line); border-radius:12px;
+    padding:20px 22px; position:relative; padding-left:26px;
+  }
+  .log-entry::before{
+    content:''; position:absolute; left:0; top:0; bottom:0; width:4px;
+    background:var(--accent); border-radius:12px 0 0 12px;
+  }
+  .log-entry .row1{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; margin-bottom:2px;}
+  .log-entry .role-title{font-family:var(--display); font-weight:700; font-size:16px;}
+  .log-entry .ver{font-family:var(--mono); font-size:11.5px; color:var(--accent); background:var(--accent-soft); padding:3px 9px; border-radius:12px; font-weight:600;}
+  .log-entry .role-org{color:var(--primary); font-weight:600; font-size:14px; margin-bottom:2px;}
+  .log-entry .role-meta{font-family:var(--mono); font-size:12px; color:var(--ink-faint); margin-bottom:12px;}
+  .log-entry ul{list-style:none;}
+  .log-entry ul li{position:relative; padding-left:18px; color:var(--ink-soft); font-size:14.5px; margin-bottom:6px;}
+  .log-entry ul li::before{content:'+'; position:absolute; left:0; color:var(--status); font-weight:700; font-family:var(--mono);}
+  .log-entry .repo-link{
+    display:inline-flex; align-items:center; gap:6px; margin-top:14px;
+    font-family:var(--mono); font-size:12px; font-weight:600; color:var(--primary);
+    text-decoration:none; padding:6px 12px; border:1px solid var(--line); border-radius:7px;
+    background:var(--primary-soft); transition:border-color .15s, transform .15s;
+  }
+  .log-entry .repo-link:hover{border-color:var(--primary); transform:translateY(-1px);}
+  .log-entry .repo-link svg{width:14px; height:14px; flex-shrink:0;}
+  .log-entry .link-row{display:flex; gap:10px; flex-wrap:wrap;}
+  .promo-video{
+    margin-top:16px; border-radius:9px; overflow:hidden; border:1px solid var(--line);
+    background:#0c0e14; aspect-ratio:16/9;
+  }
+  .promo-video video{width:100%; height:100%; display:block; object-fit:cover;}
+  .promo-shot{
+    margin-top:16px; border-radius:9px; overflow:hidden; border:1px solid var(--line);
+    background:var(--bg); aspect-ratio:16/9; display:flex; align-items:center; justify-content:center;
+  }
+  .promo-shot img{max-width:100%; max-height:100%; width:auto; height:100%; object-fit:contain; display:block;}
+
+  /* ---- skills as modules ---- */
+  .modules{display:flex; flex-wrap:wrap; gap:10px;}
+  .module{
+    display:flex; align-items:center; gap:8px; font-size:13px; font-weight:500;
+    padding:9px 14px; background:var(--surface); border:1px solid var(--line); border-radius:20px;
+    transition:border-color .15s, transform .15s;
+  }
+  .module:hover{border-color:var(--primary); transform:translateY(-1px);}
+  .module::before{content:''; width:6px; height:6px; border-radius:50%; background:var(--status); flex-shrink:0;}
+
+  /* ---- education / certs ---- */
+  .card-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  @media (max-width:760px){ .card-grid{grid-template-columns:1fr;} }
+  .card{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:20px 22px;}
+  .card h3{font-family:var(--display); font-weight:700; font-size:15.5px; margin-bottom:5px;}
+  .card .sub{color:var(--primary); font-size:13.5px; font-weight:600; margin-bottom:4px;}
+  .card .meta{font-family:var(--mono); font-size:12px; color:var(--ink-faint);}
+
+  .cert-list{display:flex; flex-direction:column; gap:10px;}
+  .cert-item{
+    display:flex; align-items:center; gap:12px; background:var(--surface);
+    border:1px solid var(--line); border-radius:10px; padding:14px 18px; font-size:14px; font-weight:500;
+  }
+  .cert-item .badge{
+    width:26px; height:26px; border-radius:7px; background:var(--primary-soft); color:var(--primary);
+    display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0; font-weight:700;
+  }
+
+  .ach-list{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+  @media (max-width:600px){ .ach-list{grid-template-columns:1fr;} }
+  .ach-item{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px; border-left:3px solid var(--gold);}
+  .ach-item .t{font-size:14px; font-weight:600;}
+  .ach-item .y{font-family:var(--mono); font-size:11.5px; color:var(--ink-faint); margin-top:2px;}
+
+  /* ---- contact ---- */
+  footer{padding:64px 0 46px;}
+  .contact-panel{
+    background:var(--ink); color:#fff; border-radius:16px; padding:46px 36px; text-align:center; position:relative; overflow:hidden;
+  }
+  .contact-panel::before{
+    content:''; position:absolute; inset:0;
+    background:radial-gradient(circle at 20% 0%, rgba(47,62,158,.5), transparent 55%),
+               radial-gradient(circle at 80% 100%, rgba(14,143,136,.35), transparent 55%);
+  }
+  .contact-panel > *{position:relative;}
+  .contact-panel h2{font-family:var(--display); font-weight:700; font-size:26px; margin-bottom:10px;}
+  .contact-panel p{color:#c3c8d8; margin-bottom:26px; font-size:15px;}
+  .contact-links{display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-bottom:20px;}
+  .contact-panel .btn-primary{background:#fff; color:var(--ink);}
+  .contact-panel .btn-primary:hover{background:var(--accent-soft); color:var(--primary);}
+  .contact-panel .btn-ghost{border-color:rgba(255,255,255,.25); color:#fff; background:transparent;}
+  .contact-panel .btn-ghost:hover{border-color:#fff;}
+  .contact-panel .addr-block{color:#a8afc0; justify-content:center; align-items:center; font-size:12.5px;}
+  .contact-panel .addr-block .lbl{color:#7d859c;}
+
+  .foot-note{text-align:center; font-family:var(--mono); font-size:11px; color:var(--ink-faint); margin-top:30px;}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">TIMOTHY JAY <span>SAYSON</span></div>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+    </nav>
+    <a class="nav-cta" href="#contact">Contact</a>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero" id="top">
+    <div class="hero-grid">
+      <div>
+        <span class="status-pill">available for full-time roles</span>
+        <h1>Building reliable software<br>and <span class="accent">keeping systems running.</span></h1>
+        <p class="role">BS Information Technology graduate (Summa Cum Laude) specializing in Mobile &amp; Internet Technologies — with hands-on experience across mobile development, IoT, and IT support.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="mailto:tjsayson28@gmail.com">Email me</a>
+          <a class="btn btn-ghost" href="#experience">See experience</a>
+        </div>
+        <div class="addr-block">
+          <span><span class="lbl">HOME</span> 65 Rafaela 1, Ampid 1, San Mateo, Rizal</span>
+          <span><span class="lbl">CURRENT</span> Pioneer Woodlands, Mandaluyong City</span>
+          <span><span class="lbl">CONTACT</span> +63 945 492 3867 · tjsayson28@gmail.com</span>
+        </div>
+      </div>
+
+      <div class="photo-showcase">
+        <div class="frame">
+          <img src="assets/profile.jpg" alt="Timothy Jay V. Sayson">
+        </div>
+        <div class="float-badge badge-honors">
+          <div class="lbl">Honors</div>
+          <div class="val">Summa Cum Laude 🎓</div>
+        </div>
+        <div class="float-badge badge-status">
+          <span class="dot"></span>
+          <span class="val">available for work</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="sec-head"><span class="sec-tag">01</span><span class="sec-title">About</span></div>
+    <div class="about-grid">
+      <div>
+        <p>I'm a recent BS Information Technology graduate from Asia Pacific College, Summa Cum Laude, specializing in Mobile and Internet Technologies. My work spans mobile app development, IoT hardware integration, and IT support — always with an eye on the person actually using the system.</p>
+        <p>Across five roles I've prototyped interfaces, coded Arduino integrations, run sprints as Scrum Master, and kept end-user hardware running as an IT intern. I'm looking for a full-time role where I can keep building at that intersection of software, systems, and people.</p>
+      </div>
+      <div class="info-table">
+        <div><span>DEGREE</span><span>BS IT — Mobile &amp; Internet Tech</span></div>
+        <div><span>HONORS</span><span>Summa Cum Laude</span></div>
+        <div><span>SCHOOL</span><span>Asia Pacific College</span></div>
+        <div><span>TIMELINE</span><span>2022 – 2026</span></div>
+        <div><span>BASED IN</span><span>Metro Manila / Rizal, PH</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head"><span class="sec-tag">02</span><span class="sec-title">Experience</span></div>
+    <div class="log">
+
+      <div class="log-entry">
+        <div class="row1"><span class="role-title">Local IT Intern</span><span class="ver">latest</span></div>
+        <div class="role-org">Aumovio</div>
+        <div class="role-meta">Taguig City · Nov 2025 – May 2026</div>
+        <ul>
+          <li>Deployed and configured employee laptops and IT equipment.</li>
+          <li>Resolved hardware and software issues for end users.</li>
+          <li>Maintained IT asset inventory and documentation.</li>
+        </ul>
+      </div>
+
+      <div class="log-entry">
+        <div class="row1"><span class="role-title">Mobile Developer</span><span class="ver">2025</span></div>
+        <div class="role-org">Rekindle</div>
+        <div class="role-meta">Asia Pacific College · Jul 2025 – Oct 2025</div>
+        <ul>
+          <li>Designed interactive prototypes and wireframes.</li>
+          <li>Developed responsive front-end interfaces based on UI/UX designs.</li>
+          <li>Identified and reported bugs.</li>
+        </ul>
+        <div class="promo-video">
+          <video controls preload="metadata" poster="">
+            <source src="assets/rekindle-promo.mp4" type="video/mp4">
+            Your browser doesn't support embedded video. <a href="assets/rekindle-promo.mp4">Download the Rekindle promo video</a> instead.
+          </video>
+        </div>
+        <div class="link-row">
+          <a class="repo-link" href="https://github.com/tvsayson/Rekindle" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+            View repository
+          </a>
+        </div>
+      </div>
+
+      <div class="log-entry">
+        <div class="row1"><span class="role-title">IoT Developer</span><span class="ver">2024–25</span></div>
+        <div class="role-org">ParkSense</div>
+        <div class="role-meta">Asia Pacific College · Mar 2024 – Jun 2025</div>
+        <ul>
+          <li>Handled Arduino coding and system integration.</li>
+          <li>Led sprint planning as Scrum Master.</li>
+          <li>Managed project planning and documentation as Project Manager.</li>
+        </ul>
+        <div class="promo-shot">
+          <img src="assets/parksense.png" alt="ParkSense dashboard showing real-time parking slot monitoring">
+        </div>
+        <a class="repo-link" href="https://github.com/johnjorellandicho/djangofinals" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+          View repository
+        </a>
+      </div>
+
+      <div class="log-entry">
+        <div class="row1"><span class="role-title">Mobile Developer</span><span class="ver">2023</span></div>
+        <div class="role-org">Bamboo Verse</div>
+        <div class="role-meta">Asia Pacific College · Sep 2023 – Nov 2023</div>
+        <ul>
+          <li>Led mobile app development and UI/UX design.</li>
+          <li>Designed interactive prototypes and wireframes.</li>
+          <li>Managed front-end logic and navigation.</li>
+        </ul>
+        <div class="promo-shot">
+          <img src="assets/bwp.png" alt="Bamboo Warriors Philippines mobile app screens">
+        </div>
+        <a class="repo-link" href="https://github.com/tvsayson/Bamboo-Warriors-Philippines-Mobile-App" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+          View repository
+        </a>
+      </div>
+
+      <div class="log-entry">
+        <div class="row1"><span class="role-title">Technical Consultant</span><span class="ver">2021</span></div>
+        <div class="role-org">KoDatos</div>
+        <div class="role-meta">Asia Pacific College · Nov 2021</div>
+        <ul>
+          <li>Identified and resolved website bugs and errors.</li>
+          <li>Ensured smooth user experience through front-end fixes.</li>
+          <li>Created wireframes and prototypes for platform design.</li>
+        </ul>
+        <div class="promo-shot">
+          <img src="assets/kodatos.png" alt="KoDatos COVID-19 information verification web page">
+        </div>
+        <a class="repo-link" href="https://github.com/fofajardo/kodatos" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+          View repository
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head"><span class="sec-tag">03</span><span class="sec-title">Skills</span></div>
+    <div class="modules">
+      <span class="module">Web &amp; Mobile Development</span>
+      <span class="module">Prototyping &amp; UI/UX Design</span>
+      <span class="module">Troubleshooting &amp; Debugging</span>
+      <span class="module">Problem-Solving</span>
+      <span class="module">Collaboration</span>
+      <span class="module">Adaptability</span>
+      <span class="module">Critical Thinking</span>
+      <span class="module">Arduino / IoT Integration</span>
+      <span class="module">Scrum / Sprint Planning</span>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="sec-head"><span class="sec-tag">04</span><span class="sec-title">Education</span></div>
+    <div class="card-grid">
+      <div class="card">
+        <h3>BS Information Technology</h3>
+        <div class="sub">Mobile &amp; Internet Technologies specialization</div>
+        <div class="meta">Asia Pacific College · 2022 – 2026 · Summa Cum Laude</div>
+      </div>
+      <div class="card">
+        <h3>STEM Strand</h3>
+        <div class="sub">Senior High School</div>
+        <div class="meta">Asia Pacific College · 2020 – 2022 · With High Honors</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="sec-head"><span class="sec-tag">05</span><span class="sec-title">Certifications</span></div>
+    <div class="cert-list">
+      <div class="cert-item"><span class="badge">✓</span>SCRUM Foundation Certification</div>
+      <div class="cert-item"><span class="badge">✓</span>IBM Cybersecurity Analyst Certification</div>
+      <div class="cert-item"><span class="badge">✓</span>Cert Prep: PMI Agile Certified Practitioner (PMI-ACP)®</div>
+      <div class="cert-item"><span class="badge">✓</span>Accenture Academy Microsoft Completer</div>
+    </div>
+  </section>
+
+  <section id="achievements">
+    <div class="sec-head"><span class="sec-tag">06</span><span class="sec-title">Achievements</span></div>
+    <div class="ach-list">
+      <div class="ach-item"><div class="t">Certificate of Recognition — With Honors</div><div class="y">A.Y. 2024–2025</div></div>
+      <div class="ach-item"><div class="t">Certificate of Recognition — With Honors</div><div class="y">A.Y. 2023–2024</div></div>
+      <div class="ach-item"><div class="t">Certificate of Recognition — With Honors</div><div class="y">A.Y. 2022–2023</div></div>
+      <div class="ach-item"><div class="t">Academic Excellence Award — With High Honors</div><div class="y">A.Y. 2021–2022</div></div>
+      <div class="ach-item"><div class="t">Entrepreneurship Fest — 3rd Place</div><div class="y">A.Y. 2020–2021</div></div>
+      <div class="ach-item"><div class="t">Academic Excellence Award — With Honors</div><div class="y">A.Y. 2020–2021</div></div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="contact-panel">
+      <h2>Let's build something.</h2>
+      <p>Open to full-time IT, mobile, and systems development roles. Reach out any time.</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:tjsayson28@gmail.com">Email tjsayson28@gmail.com</a>
+        <a class="btn btn-ghost" href="tel:+639454923867">Call +63 945 492 3867</a>
+      </div>
+      <div class="addr-block">
+        <span><span class="lbl">HOME</span> 65 Rafaela 1, Ampid 1, San Mateo, Rizal</span>
+        <span><span class="lbl">CURRENT</span> Pioneer Woodlands, Mandaluyong City</span>
+      </div>
+    </div>
+    <div class="foot-note">© 2026 Timothy Jay V. Sayson — built &amp; deployed with care</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
